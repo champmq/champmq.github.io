@@ -1,0 +1,31 @@
+<html>
+
+<body>
+    <div id="demo"></div>
+    <script language="JScript">
+
+        function getCount(foldername) {
+            let myObject, f, filesCount;
+
+            var xmlhttp = new XMLHttpRequest();
+
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == XMLHttpRequest.DONE) {
+                    if (xmlhttp.status == 200) {
+                        var n = (xmlhttp.responseText.match(/"*"/g) || []).length;
+                        document.write("The number of files in this folder is: " + n);
+
+                    }
+                }
+            };
+
+            xmlhttp.open("GET", "images/", true);
+            xmlhttp.send();
+            document.write("The number of files in this folder is: " + filesCount);
+        }
+        getCount("images")
+    </script>
+
+</body>
+
+</html>
